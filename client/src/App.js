@@ -1,24 +1,8 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import {connect} from 'react-redux'
 import ProductsList from './components/ProductsList'
 import ProductDetails from './components/ProductDetails'
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
-
-
-const products = [
-  {
-    id: 1,
-    name: 'Handbag',
-    price: 1450
-  },
-  {
-    id: 5,
-    name: 'Heater',
-    price: 550
-  }
-]
 
 class App extends Component {
   render() {
@@ -34,10 +18,5 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = function (state) {
-  return {
-    products: state.products
-  }
-}
 
-export default connect(mapStateToProps)(ProductsList)
+export default App

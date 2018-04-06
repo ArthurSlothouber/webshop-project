@@ -1,6 +1,7 @@
 import React, {PureComponent} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
+import {fetchAllProducts} from '../actions/products'
 
 
 class ProductsList extends PureComponent {
@@ -8,11 +9,13 @@ class ProductsList extends PureComponent {
     products: PropTypes.arrayOf(PropTypes.shape({
       id: PropTypes.number.isRequired,
       name: PropTypes.string.isRequired,
-      price: PropTypes.number.isRequired,
-      description: PropTypes.string.isRequired,
-      image: PropTypes.string.isRequired
+      price: PropTypes.number.isRequired
     })).isRequired
   }
+
+  componentWillMount() {
+      this.props.fetchAllProducts()
+    }
 
   render() {
     const {products} = this.props
@@ -47,4 +50,4 @@ const mapStateToProps = function (state) {
   }
 }
 
-export default connect(mapStateToProps)(ProductsList)
+export default connect(mapStateToProps, { fetchAllProducts })(ProductsList)
